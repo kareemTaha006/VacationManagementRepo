@@ -1,0 +1,15 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VacationManagement.Models
+{
+    public class Department:EntityBase
+    {
+        [Key]
+        public int Id { get; set; }
+        [Display (Name="Department Name")]
+        [StringLength (150)]
+        public string Name { get; set; }=string.Empty;
+        public string ?Description { get; set; }
+
+    }
+}
