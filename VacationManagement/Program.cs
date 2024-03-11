@@ -16,6 +16,7 @@ namespace VacationManagement
             builder.Services.AddDbContext<VacationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("VacationConn")));
             builder.Services.AddScoped<ICrud<Department>,DepartmentService>();
+            builder.Services.AddScoped<ICrud<Employee>, EmployeeService>();
             var app = builder.Build();
 
 

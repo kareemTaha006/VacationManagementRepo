@@ -1,0 +1,65 @@
+﻿@model VacationManagement.ViewModels.EmployeeViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h4>Update Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="DomainModel.Id" class="form-control" hidden />
+
+            <div class="form-group">
+                <label asp-for="DomainModel.Name" class="control-label"></label>
+                <input asp-for="DomainModel.Name" class="form-control" />
+                <span asp-validation-for="DomainModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DomainModel.VacationBalance" class="control-label"></label>
+                <input asp-for="DomainModel.VacationBalance" class="form-control" />
+                <span asp-validation-for="DomainModel.VacationBalance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DomainModel.DepartmentId" class="control-label"></label>
+                <select asp-for="DomainModel.DepartmentId" class="form-control">
+                    @{
+                        if (Model.Departments != null)
+                        {
+                           
+                           foreach (var item in Model.Departments.ToList())
+                            {
+                              
+                                if (Model.DomainModel.DepartmentId == item.Id)
+                                {
+                                    <option value="@item.Id" selected>@item.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        }
+                    }
+                </select>
+                <span asp-validation-for="DomainModel.DepartmentId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
