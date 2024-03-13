@@ -1,0 +1,55 @@
+﻿@model VacationManagement.ViewModels.VacationTypeViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<script src='~/js/spectrum.js'></script>
+<link rel='stylesheet' href='~/css/spectrum.css'/>
+
+<h4>Create VacationType</h4>
+<hr />
+@if(ViewBag.ErrorMsg == false){<h4 class="alert alert-danger">Vacation Registred ...........</h4>}
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DomainModel.VactionName" class="control-label"></label>
+                <input asp-for="DomainModel.VactionName" class="form-control" />
+                <span asp-validation-for="DomainModel.VactionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DomainModel.BackgroundColor" class="control-label"></label>
+                <input asp-for="DomainModel.BackgroundColor" readonly class="form-control" id="backgroundColor" />
+                <span asp-validation-for="DomainModel.BackgroundColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DomainModel.NumberDays" class="control-label"></label>
+                <input asp-for="DomainModel.NumberDays" class="form-control" />
+                <span asp-validation-for="DomainModel.NumberDays" class="text-danger"></span>
+            </div>
+   
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+   
+}
+ <script>
+$("#backgroundColor").spectrum({
+    color:"#000",
+    preferredFormat: "hex",
+    showInput: true
+});
+$("#backgroundColor").show();
+</script>

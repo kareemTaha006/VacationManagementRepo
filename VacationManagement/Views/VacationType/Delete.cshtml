@@ -1,0 +1,46 @@
+﻿@model VacationManagement.ViewModels.VacationTypeViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+
+<h3 class="alert alert-danger">Are you sure you want to delete this?</h3>
+<div>
+    <h4>Delete VacationType</h4>
+    <hr />
+    <dl class="row">
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DomainModel.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DomainModel.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DomainModel.VactionName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DomainModel.VactionName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DomainModel.BackgroundColor)
+        </dt>
+        <dd class = "col-sm-10" style="color:#ffff; background-color:@Model.DomainModel.BackgroundColor">
+            @Html.DisplayFor(model => model.DomainModel.BackgroundColor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DomainModel.NumberDays)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DomainModel.NumberDays)
+        </dd>
+
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" name="DomainModel.Id" value="@Model.DomainModel.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

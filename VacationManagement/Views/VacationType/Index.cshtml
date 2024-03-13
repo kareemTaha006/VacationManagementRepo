@@ -1,0 +1,60 @@
+﻿@model VacationManagement.ViewModels.VacationTypeViewModel
+
+@{
+    ViewData["Title"] = "VacationTypes";
+}
+<div class="row">
+    <div class="col-md-12">
+
+
+        <h4>VacationTypes</h4>
+
+        <p>
+            <a asp-action="Create" class="btn btn-info">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DomainModel.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DomainModel.VactionName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DomainModel.BackgroundColor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DomainModel.NumberDays)
+                    </th>
+
+                    <th>Events</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.DomainList)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VactionName)
+                        </td>
+                        <td style="color:#ffff; background-color:@item.BackgroundColor">
+                            @Html.DisplayFor(modelItem => item.BackgroundColor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberDays)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Update", new {  id=item.Id  },htmlAttributes:new{@class="btn btn-info"}) |
+                            @Html.ActionLink("Delete", "Delete", new {  id=item.Id  },htmlAttributes:new{@class="btn btn-danger"})
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

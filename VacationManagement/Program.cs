@@ -17,6 +17,8 @@ namespace VacationManagement
     options.UseSqlServer(builder.Configuration.GetConnectionString("VacationConn")));
             builder.Services.AddScoped<ICrud<Department>,DepartmentService>();
             builder.Services.AddScoped<ICrud<Employee>, EmployeeService>();
+            builder.Services.AddScoped<ICrud<VacationType>,VacationTypeService>();
+          
             var app = builder.Build();
 
 
